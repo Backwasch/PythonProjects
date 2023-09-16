@@ -1,14 +1,26 @@
 
-def bubblesort(*args):
-    print(args)
-    numbers = list(args)
+def bubblesort(order,numbers):
+    #numbers = list(args)
+    #print(numbers)
     for i in range (len(numbers)):
         for x in range(0, len(numbers)-1):
-            if numbers[x] > numbers [x+1]:
-                numbers [x], numbers [x+1] = numbers [x+1], numbers[x]
-                print(numbers)
+            if order == 0:
+                if numbers[x] > numbers[x + 1]:
+                    numbers[x], numbers[x + 1] = numbers[x + 1], numbers[x]
+                    #print(numbers)
+            if order == 1:
+                if numbers[x] < numbers [x+1]:
+                    numbers [x], numbers [x+1] = numbers [x+1], numbers[x]
+                    #print(numbers)
     return(numbers)
 
-print(bubblesort(1,55,11,77,8,5,1,23,9,87,458,48,45,45964,89,489,489,4))
 
+
+select_order = int(input("Write 0 to sort by ascending order and 1 otherwise: "))
+
+user_numbers = input("Enter your numbers separated by commas: ").split(",")
+user_numbers = [int(x) for x in user_numbers]
+
+
+print(bubblesort(select_order,user_numbers))
 
