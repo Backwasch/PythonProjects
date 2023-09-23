@@ -1,19 +1,13 @@
 def RansomNote(ransomNote,magazine):
-    dic = {}
     if len(ransomNote) > len(magazine):
         return False
+    dic = {}
     for x in range(len(magazine)):
-        currentElement = dic.get(magazine[x - 1])
-        if currentElement == None:
-            dic[magazine[x - 1]] = 1
-        else:
-            dic[magazine[x - 1]] = currentElement + 1
+        dic[magazine[x - 1]] = dic.get(magazine[x - 1],0) +1
 
     for x in range(len(ransomNote)):
-        currentLetter = dic.get(ransomNote[x - 1])
-        if currentLetter == None or currentLetter < 1:
+        if dic.get(ransomNote[x - 1],0) == 0:
             return False
-        dic[ransomNote[x - 1]] = currentLetter - 1
+        dic[ransomNote[x - 1]] -= 1
     return True
-
 print(RansomNote("aabc","abcd"))
